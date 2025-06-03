@@ -58,7 +58,13 @@ document.getElementById("speedBtn").onclick = () => {
     } else if (speed === 200) {
         speed = 100;
          span.textContent = "x3";
-    } else if (speed === 100) {
+    }else if (speed === 100) {
+        speed = 50;
+         span.textContent = "x4";
+    }else if (speed === 50) {
+        speed = 25;
+         span.textContent = "x5";
+    } else if (speed === 25) {
         speed = 300;
          span.textContent = "x1";
     }
