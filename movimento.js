@@ -6,6 +6,13 @@ let playerPosition = null;
 let pathStack = [];
 const visited = new Set();
 
+//velocida do intervalo e variavel de pausa
+let interval = null;
+let speed = 300;
+
+//variavel pra saber se esta em pause ou nao
+let isRunning = false;
+
 //variavel para pintura da celula 
 export const visitedPintado = new Set();
 
@@ -14,14 +21,51 @@ window.addEventListener('resize', () => {
     resizeCanvas();
 });
 
-// evento de quando a pagina caregar ele chama a funçao resizeCanvas para dimencionar o canvas 90% largura e altura logo apos começa o setInterval 300ms que cham a funçao de movimento mivimenTototal e se mover ele chama a funçao de desenho da maze
-window.addEventListener('load', () => {
+
+
+ //funçao para começar com a maze desenhada
+resizeCanvas()
+
+//  funçao  para dimencionar o canvas 90% largura e altura ,que cham a funçao de movimento mivimenTototal e se mover ele chama a funçao de desenho da maze , essa funçao tem um setInterval de speed
+function startLoop() {
     resizeCanvas();
-    setInterval(() => {
+    console.log(speed)
+    if (interval) clearInterval(interval);
+    interval = setInterval(() => {
         const moved = movimentoTotal();
         if (moved) drawMaze(maze,visitedPintado);
-    }, 300);
-});
+    }, speed);
+};
+
+//pega o id do butao para realizar funçoes com click
+
+// aqui ele da play começando o loop
+document.getElementById("playBtn").onclick = () => {startLoop(),
+    isRunning = true
+}
+
+//aqui ele dar pause 
+document.getElementById("pauseBtn").onclick = () => {clearInterval(interval),
+    isRunning = false
+}
+
+//funçao de controle de velocidade do setInterval e do texto de span do butao de velocidade
+document.getElementById("speedBtn").onclick = () => {
+    const span = document.querySelector("#speedBtn span");
+       if (speed === 300) {
+        speed = 200;
+         span.textContent = "x2";
+    } else if (speed === 200) {
+        speed = 100;
+         span.textContent = "x3";
+    } else if (speed === 100) {
+        speed = 300;
+         span.textContent = "x1";
+    }
+     if (isRunning) {
+        startLoop();
+    }
+};
 
 
 // funçao global do mivimento
