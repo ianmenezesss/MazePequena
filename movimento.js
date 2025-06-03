@@ -1,5 +1,5 @@
 // importa a maze que a matrix a funçao de desenha drawMaze para redesenhar a cada movimento 
-import { maze, drawMaze, resizeCanvas } from "./maze.js";
+import { maze, drawMaze, resizeCanvas } from "./renderMaze.js";
 
 // variaveis global -playerPosition posiçao do jogador -pathStack pilha de posiçoes que o jogador visitou pata o backtraking --visited para celulas visitadas
 let playerPosition = null;
