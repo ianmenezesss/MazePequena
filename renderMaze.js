@@ -1,18 +1,22 @@
+// variavel para pintar o caminho
 import { visitedPintado } from './movimento.js';
+
+// todas os labirintos
 import { mazes } from './allMaze.js';
 
-// pega o canvas
+// pega o canvas para manipular ele 
 const canvas = document.getElementById('mazeCanvas');
+
+// para desenha o canvas
 const ctx = canvas.getContext('2d');
 
-// Matriz do labirinto (1 = parede, 0 = caminho)
+// random para pega uma maze da lista de mazes
  const index = Math.floor(Math.random() * mazes.length);
-  export const mazeMatrix = mazes[index];
 
+// constante para export e manipulaçao
+ export const maze = mazes[index];
 
-export let maze = mazeMatrix.map(row => [...row]);
-
-
+//funçao para desenha a maze no canvas
 export function drawMaze(matrix,visitedPintado) {
     const cellSize = Math.min(
         canvas.width / matrix[0].length,
