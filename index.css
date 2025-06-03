@@ -1,0 +1,16 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center; /* centraliza horizontal */
+  align-items: center;     /* centraliza vertical */
+  height: 100vh;           /* altura total da viewport */
+}
+
+canvas {
+  display: block; /* remove espaço extra abaixo do canvas */
+  /* largura e altura já serão definidas no JS para 90% da tela */
+}
