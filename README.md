@@ -7,7 +7,10 @@
 -Ian Davi Menezes Alves Bomfim RA: 12723134435
 
 ## Como funciona
-
+- Cor amarela e o caminho desfeito no backtracking
+- Cor verde e a caminho certo percorrido
+- cor azul e o jogador virtual
+- cor vermelha e a porta
 - O labirinto é desenhado no canvas (`<canvas>`).
 - 0 para caminho 1 para parede.
 - O personagem começa do ponto 2 e vai andando até achar o 3 (saída).
