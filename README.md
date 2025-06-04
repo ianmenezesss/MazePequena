@@ -3,8 +3,8 @@
 -Jogo de labirinto em JavaScript onde o player se move sozinho até achar a saída.
 
 ## Integrantes
--Ian freire Borges RA:12723134698
--Ian menezes RA:
+-Ian Freire Borges RA: 12723134698
+-Ian Davi Menezes Alves Bomfim RA: 12723134435
 
 ## Como funciona
 
