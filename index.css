@@ -1,8 +1,11 @@
+/* define que o html e body ocupam toda a altura da tela e removem margens padrao */
 html, body {
   height: 100%;
   margin: 0;
+  background-color: gray;
 }
 
+/* centraliza o conteudo na tela */
 body {
   display: flex;
   justify-content: center; 
@@ -10,9 +13,12 @@ body {
   height: 100vh;           
 }
 
+/* remove qualquer espaço extra em volta do canvas */
 canvas {
   display: block; 
 }
+
+/* estiliza o container dos botoes */
 .button-container{
   display: flex;
   flex-direction: row;
@@ -20,6 +26,8 @@ canvas {
   gap: 1rem;
   margin-bottom: 1rem;
 }
+
+/* responsividade para telas pequenas */
 @media (max-width: 600px) {
 
   .button-container {

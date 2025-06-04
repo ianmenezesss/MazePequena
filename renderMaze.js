@@ -18,14 +18,18 @@ const ctx = canvas.getContext('2d');
 
 //funçao para desenha a maze no canvas
 export function drawMaze(matrix,visitedPintado) {
+
+    // calcula o tamanho da celula
     const cellSize = Math.min(
         canvas.width / matrix[0].length,
         canvas.height / matrix.length
     );
 
+    //ajuda na centralizaçao do labirinto
     const offsetX = (canvas.width - (matrix[0].length * cellSize)) / 2;
     const offsetY = (canvas.height - (matrix.length * cellSize)) / 2;
 
+    //limpa o canvas para desenhar novamente
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 
@@ -37,7 +41,7 @@ export function drawMaze(matrix,visitedPintado) {
 
            
             if (visitedPintado.has(`${col},${row}`) && matrix[row][col] === 0) {
-                ctx.fillStyle = '#aaf'; // uma cor para visitado,
+                ctx.fillStyle = '#00FF00'; // uma cor para visitado,
                 ctx.fillRect(x, y, cellSize, cellSize);
             } else {
             if (matrix[row][col] === 1) {
@@ -53,7 +57,7 @@ export function drawMaze(matrix,visitedPintado) {
                 ctx.fillStyle = '#fff';  // pinta o numero 0 caminho
                 ctx.fillRect(x, y, cellSize, cellSize);
             }
-            ctx.strokeStyle = '#999';
+            ctx.strokeStyle = '#999'; // grind visual
             ctx.strokeRect(x, y, cellSize, cellSize);
         }
     }

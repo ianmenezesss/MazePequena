@@ -117,38 +117,50 @@ function movimentoTotal() {
         { posX: 0, posY: 1}
       ];
 
-      // looop para os movimentos posiveis , e a key para quarda a posiçao 
+      // looop para os movimentos posiveis , e a visitedCel para quarda a posiçao 
          for (const { posX, posY} of directions) {
-        const newX = playerPosition.x + posX;
-        const newY = playerPosition.y + posY;
-        const key = `${newX},${newY}`;
+        const newPosX = playerPosition.x + posX;
+        const newPosY = playerPosition.y + posY;
+        const visitedCel = `${newPosX},${newPosY}`;
     
         // condiçao de movimento pelo caminhos nao visitados
-    if (maze[newY]?.[newX] === 0 && !visited.has(key)){
+    if (maze[newPosY]?.[newPosX] === 0 && !visited.has(visitedCel)){
 
         // atualiza o labirinto para o movimento do player
         maze[playerPosition.y][playerPosition.x] = 0;
-        maze[newY][newX] = 2;
+        maze[newPosY][newPosX] = 2;
 
         //atualiza a posiçao do jogador
-        playerPosition = { x: newX, y: newY };
+        playerPosition = { x: newPosX, y: newPosY };
 
         //atualiza a pilha de movimentos para o backtrking
         pathStack.push(playerPosition);
 
         //atualiza as casas visitadas
-        visited.add(key);
+        visited.add(visitedCel);
 
         //atualiza a pintura
-        visitedPintado.add(key);
+        visitedPintado.add(visitedCel);
 
         //retorno para sinaliza que olve movimento
         return true;
     };
 
     // condiçao para achar a porta
-    if(maze[newY]?.[newX] === 3 && !visited.has(key)){
-        playerPosition = { x: newX, y: newY };
+    if(maze[newPosY]?.[newPosX] === 3 && !visited.has(visitedCel)){
+        playerPosition = { x: newPosX, y: newPosY };
+         
+        // pausa o mivimento
+         clearInterval(interval);
+         isRunning = false;
+ 
+
+        // alerta de porta achada e renicia a pagina para novo labirinto com um tempo de 1s 
+        setTimeout(() => {
+        alert("Achou a saída!");
+        location.reload();
+        }, 1000);
+    
         return true;
     };
 
