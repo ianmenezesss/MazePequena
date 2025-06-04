@@ -31,7 +31,7 @@
 - `README.md`: você tá lendo ele agora.
 
 ## Como usar
-
+# acesse: maze-pequena.vercel.app ou
 1. Abre o `index.html` no navegador.
 2. Aperta **Play**.
 3. Curte a viagem.
