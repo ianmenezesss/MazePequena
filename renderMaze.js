@@ -11,13 +11,13 @@ const canvas = document.getElementById('mazeCanvas');
 const ctx = canvas.getContext('2d');
 
 // random para pega uma maze da lista de mazes
- const index = Math.floor(Math.random() * mazes.length);
+const index = Math.floor(Math.random() * mazes.length);
 
 // constante para export e manipulaçao
- export const maze = mazes[index];
+export const maze = mazes[index];
 
 //funçao para desenha a maze no canvas
-export function drawMaze(matrix,visitedPintado) {
+export function drawMaze(matrix, visitedPintado) {
 
     // calcula o tamanho da celula
     const cellSize = Math.min(
@@ -39,28 +39,28 @@ export function drawMaze(matrix,visitedPintado) {
             const x = offsetX + col * cellSize;
             const y = offsetY + row * cellSize;
 
-           
+
             if (visitedPintado.has(`${col},${row}`) && matrix[row][col] === 0) {
                 ctx.fillStyle = '#00FF00'; // uma cor para visitado,
                 ctx.fillRect(x, y, cellSize, cellSize);
             } else {
-            if (matrix[row][col] === 1) {
-                ctx.fillStyle = '#333';  // pinta o numero 1 parede
-                ctx.fillRect(x, y, cellSize, cellSize);
-            } else if (matrix[row][col] === 2) {
-                ctx.fillStyle = '#0077ff';  // pinta o numero 2 player
-                ctx.fillRect(x, y, cellSize, cellSize);
-            } else if (matrix[row][col] === 3) { 
-                ctx.fillStyle = '#ff0000';  // pinta o numero 3 porta 
-                ctx.fillRect(x, y, cellSize, cellSize);
-            }else {
-                ctx.fillStyle = '#fff';  // pinta o numero 0 caminho
-                ctx.fillRect(x, y, cellSize, cellSize);
+                if (matrix[row][col] === 1) {
+                    ctx.fillStyle = '#333';  // pinta o numero 1 parede
+                    ctx.fillRect(x, y, cellSize, cellSize);
+                } else if (matrix[row][col] === 2) {
+                    ctx.fillStyle = '#0077ff';  // pinta o numero 2 player
+                    ctx.fillRect(x, y, cellSize, cellSize);
+                } else if (matrix[row][col] === 3) {
+                    ctx.fillStyle = '#ff0000';  // pinta o numero 3 porta 
+                    ctx.fillRect(x, y, cellSize, cellSize);
+                } else {
+                    ctx.fillStyle = '#fff';  // pinta o numero 0 caminho
+                    ctx.fillRect(x, y, cellSize, cellSize);
+                }
+                ctx.strokeStyle = '#999'; // grind visual
+                ctx.strokeRect(x, y, cellSize, cellSize);
             }
-            ctx.strokeStyle = '#999'; // grind visual
-            ctx.strokeRect(x, y, cellSize, cellSize);
         }
-    }
     }
 }
 
@@ -68,7 +68,7 @@ export function drawMaze(matrix,visitedPintado) {
 export function resizeCanvas() {
     canvas.width = window.innerWidth * 0.9;;
     canvas.height = window.innerHeight * 0.9;;
-    drawMaze(maze,visitedPintado);
+    drawMaze(maze, visitedPintado);
 }
 
 

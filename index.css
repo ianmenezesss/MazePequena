@@ -1,39 +1,40 @@
 /* define que o html e body ocupam toda a altura da tela e removem margens padrao */
-html, body {
-  height: 100%;
-  margin: 0;
-  background-color: gray;
+html,
+body {
+    height: 100%;
+    margin: 0;
+    background-color: gray;
 }
 
 /* centraliza o conteudo na tela */
 body {
-  display: flex;
-  justify-content: center; 
-  align-items: center;     
-  height: 100vh;           
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 /* remove qualquer espaço extra em volta do canvas */
 canvas {
-  display: block; 
+    display: block;
 }
 
 /* estiliza o container dos botoes */
-.button-container{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
 }
 
 /* responsividade para telas pequenas */
 @media (max-width: 600px) {
 
-  .button-container {
-   margin-bottom: 0rem;
-   
-  }
+    .button-container {
+        margin-bottom: 0rem;
+
+    }
 
 
 }
