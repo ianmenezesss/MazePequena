@@ -168,7 +168,7 @@ function movimentoTotal() {
 
                     // alerta de porta achada e renicia a pagina para novo labirinto com um tempo de 1s 
                     setTimeout(() => {
-                        alert("Achou a saída!");
+                        alert("Achou a saída! Recomeçando o labirinto...");
                         location.reload();
                     }, 1000);
 
@@ -185,7 +185,12 @@ function movimentoTotal() {
 
         // condiçao caso nao tenha caminho de saida 
         if (pathStack.length <= 1) {
-            console.log("Não há caminho para voltar, fim do algoritmo");
+            clearInterval(interval);
+            isRunning = false;
+             setTimeout(() => {
+                        alert("Não achou a saida! Recomeçando o labirinto...");
+                        location.reload();
+                    }, 1000);
             return false;
         }
 
