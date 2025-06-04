@@ -16,6 +16,8 @@ let isRunning = false;
 //variavel para pintura da celula 
 export const visitedPintado = new Set();
 
+export const visitedPintadoErrado = new Set();
+
 // evento de redimensionamento da janela que chama funçao para redimencionar o canvas
 window.addEventListener('resize', () => {
     resizeCanvas();
@@ -33,7 +35,7 @@ function startLoop() {
     if (interval) clearInterval(interval);
     interval = setInterval(() => {
         const moved = movimentoTotal();
-        if (moved) drawMaze(maze, visitedPintado);
+        if (moved) drawMaze(maze, visitedPintado,visitedPintadoErrado);
     }, speed);
 };
 
@@ -202,6 +204,10 @@ function movimentoTotal() {
 
         // remove essa celula da lista de pintadas
         visitedPintado.delete(`${currentX},${currentY}`);
+
+
+        // para pinta a celular do caminho desfeito
+        visitedPintadoErrado.add(`${currentX},${currentY}`);
 
         // constante da posiçao onde o player tem que ir para realiza a volta ,bactraking
         const prevPos = pathStack[pathStack.length - 1];

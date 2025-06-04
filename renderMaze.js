@@ -1,6 +1,9 @@
 // variavel para pintar o caminho
 import { visitedPintado } from './movimento.js';
 
+// para pintar o caminho desfeito no backtraking
+import { visitedPintadoErrado } from './movimento.js';
+
 // todas os labirintos
 import { mazes } from './allMaze.js';
 
@@ -17,7 +20,7 @@ const index = Math.floor(Math.random() * mazes.length);
 export const maze = mazes[index];
 
 //funçao para desenha a maze no canvas
-export function drawMaze(matrix, visitedPintado) {
+export function drawMaze(matrix, visitedPintado,visitedPintadoErrado) {
 
     // calcula o tamanho da celula
     const cellSize = Math.min(
@@ -43,7 +46,11 @@ export function drawMaze(matrix, visitedPintado) {
             if (visitedPintado.has(`${col},${row}`) && matrix[row][col] === 0) {
                 ctx.fillStyle = '#00FF00'; // uma cor para visitado,
                 ctx.fillRect(x, y, cellSize, cellSize);
-            } else {
+            } else if(visitedPintadoErrado.has(`${col},${row}`) && matrix[row][col] === 0){
+                ctx.fillStyle = '#FFFF00'; // uma cor para a celulas visitadas desfeitas no back,
+                ctx.fillRect(x, y, cellSize, cellSize);
+            }
+                else {
                 if (matrix[row][col] === 1) {
                     ctx.fillStyle = '#333';  // pinta o numero 1 parede
                     ctx.fillRect(x, y, cellSize, cellSize);
@@ -68,7 +75,7 @@ export function drawMaze(matrix, visitedPintado) {
 export function resizeCanvas() {
     canvas.width = window.innerWidth * 0.9;;
     canvas.height = window.innerHeight * 0.9;;
-    drawMaze(maze, visitedPintado);
+    drawMaze(maze, visitedPintado , visitedPintadoErrado);
 }
 
 
